@@ -1,14 +1,11 @@
 package ru.jakimenko.migration.async;
 
-import com.google.common.collect.Lists;
 import io.spring.guides.gs_producing_web_service.Country;
-import ru.jakimenko.migration.PpdClient;
-import ru.jakimenko.migration.sync.Task;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class AsyncExecutor {
@@ -29,7 +26,6 @@ public class AsyncExecutor {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
         final AtomicInteger counter = new AtomicInteger(0);
 
@@ -53,12 +49,6 @@ public class AsyncExecutor {
                 e.printStackTrace();
             }
         }
-    }
-
-    static String durationTimeToString(final long millis) {
-        return String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis),
-                TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
-                TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
     }
 
     static String getCountryName() {

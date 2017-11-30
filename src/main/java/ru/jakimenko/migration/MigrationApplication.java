@@ -9,8 +9,6 @@ import ru.jakimenko.migration.async.AsyncExecutor;
 import ru.jakimenko.migration.async.Client;
 import ru.jakimenko.migration.sync.SyncExecutor;
 
-//import hello.wsdl.GetQuoteResponse;
-
 @SpringBootApplication
 @Slf4j
 public class MigrationApplication {
@@ -22,7 +20,6 @@ public class MigrationApplication {
 	CommandLineRunner lookup(PpdClient ppdClient) {
 		return args -> {
 //            new SyncExecutor().execute(ppdClient);
-//            new Client().some();
 			new AsyncExecutor().execute();
         };
 	}
